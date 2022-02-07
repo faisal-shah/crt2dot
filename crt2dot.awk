@@ -29,7 +29,7 @@ BEGIN {
             numtok++;
         }
     }
-    state = "SEARCH_CRF";
+    state = "SEARCH_CRT";
     printf "digraph {\n"
 }
 END {
@@ -39,7 +39,7 @@ END {
     }
 }
 {
-    if (state == "SEARCH_CRF")
+    if (state == "SEARCH_CRT")
     {
         if ($0 == "Cross Reference Table")
         {

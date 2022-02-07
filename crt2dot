@@ -13,6 +13,7 @@ Help ()
    echo " readelf to determine if a symbol in the CRT is a functino or not."
    echo " The output is a DOT file, use the dot utility to generate an image."
    echo
+   echo " crt2dot.awk needs to be in the path somwhere .."
 }
 
 [[ $# -eq 0 ]] && Help && exit 0

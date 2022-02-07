@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+Help ()
+{
+   # Display Help
+   echo "Usage: crt2dot elf-file map-file out-file <types>"
+   echo " Convert GCC LD Cross Reference Table (--cref) to digraph using DOT"
+   echo
+   echo " <types> is a comma separated list of symbol types to include in"
+   echo "         the graph. If ommited, only FUNC is included"
+   echo
+   echo " Only functions in the CRT are used for graph generation. It uses"
+   echo " readelf to determine if a symbol in the CRT is a functino or not."
+   echo " The output is a DOT file, use the dot utility to generate an image."
+   echo
+}
+
+[[ $# -eq 0 ]] && Help && exit 0
+[[ $# -lt 3 ]] || [[ $# -gt 4 ]] && echo -e "Invalid number of arguments.\n\n" && Help && exit 1
+[[ ! -f $1 ]]  && echo -e "$1"" does not exist"
+[[ ! -f $2 ]]  && echo -e "$2"" does not exist"
+[[ ! -f $1 ]] || [[ ! -f $2 ]] && exit 1
+[[ $# -eq 4 ]] && FILT=$4
+[[ $# -ne 4 ]] && FILT="FUNC"
+
+readelf -s "$1" > "$1".readelf && \
+    [ -f "$1".readelf ] && \
+    ./crt2dot.awk -v readelf="$1".readelf -v filt=${FILT} "$2" > "$3"

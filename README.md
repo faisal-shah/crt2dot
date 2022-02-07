@@ -21,8 +21,16 @@ Below are example outputs from building a ChibiOS testhal application with and
 without link time optimization (LTO).
 
 ```shell
-crt2dot ch.elf ch.map graph.dot # types ommited, will default to FUNC only
-dot -Tpng -Grankdir="LR" -o graph.png graph.dot
+make -f <makefile> USE_LTO=no
+crt2dot path/to/ch.elf path/to/ch.map graph_noLTO.dot # types ommited, will default to FUNC only
+dot -Tpng -Grankdir="LR" -o graph_noLTO.png graph_noLTO.dot
+
+make clean
+
+make -f <makefile> USE_LTO=yes
+crt2dot path/to/ch.elf path/to/ch.map graph_LTO.dot # types ommited, will default to FUNC only
+dot -Tpng -Grankdir="LR" -o graph_LTO.png graph_LTO.dot
+
 ```
 
 

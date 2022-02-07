@@ -10,7 +10,7 @@ Help ()
    echo "         the graph. If ommited, only FUNC is included"
    echo
    echo " Only functions in the CRT are used for graph generation. It uses"
-   echo " readelf to determine if a symbol in the CRT is a functino or not."
+   echo " readelf to determine if a symbol in the CRT is a function or not."
    echo " The output is a DOT file, use the dot utility to generate an image."
    echo
    echo " crt2dot.awk needs to be in the path somwhere .."

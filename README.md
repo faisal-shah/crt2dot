@@ -13,6 +13,8 @@ Convert GCC LD Cross Reference Table (--cref) to digraph using DOT
 Only functions in the CRT are used for graph generation. It uses
 readelf to determine if a symbol in the CRT is a functino or not.
 The output is a DOT file, use the dot utility to generate an image.
+
+crt2dot.awk needs to be in the path somwhere ..
 ```
 
 Below are example outputs from building a ChibiOS testhal application with and

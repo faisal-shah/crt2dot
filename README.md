@@ -21,7 +21,8 @@ Below are example outputs from building a ChibiOS testhal application with and
 without link time optimization (LTO).
 
 ```shell
-dot -Tpng -Grankdir="LR" -o <filename.png> input.dot
+crt2dot ch.elf ch.map graph.dot # types ommited, will default to FUNC only
+dot -Tpng -Grankdir="LR" -o graph.png graph.dot
 ```
 
 
